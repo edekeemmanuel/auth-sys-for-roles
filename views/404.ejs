@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="">
+        <img src="images/404.svg" alt="" srcset="">
+
+        <% if(method.toLowerCase() == 'get'){ %>
+            <h1> Cannot <b style="color: purple"> <%- method %> </b>
+                <%-path%>
+            </h1>
+            <% } else  if(method.toLowerCase() == 'post'){ %>
+                <h1> Cannot <b style="color: green"> <%- method %> </b>
+                    <%-path%>
+                </h1>
+                <% } else  if(method.toLowerCase() == 'put'){ %>
+                    <h1> Cannot <b style="color: brown"> <%- method %> </b>
+                        <%-path%>
+                    </h1>
+                    <% } else  if(method.toLowerCase() == 'patch'){ %>
+                        <h1> Cannot <b style="color: rgba(207, 101, 8, 0.76)"> <%- method %> </b>
+                            <%-path%>
+                        </h1>
+                        <% } else  if(method.toLowerCase() == 'delete'){ %>
+                            <h1> Cannot <b style="color: red"> <%- method %> </b>
+                                <%-path%>
+                            </h1>
+                            <% } else { %>
+                                <h1> Cannot <b style="color: rgb(0, 234, 255)"> <%- method %> </b>
+                                    <%-path%>
+                                </h1>
+                                <% } %>
+    </div>
+</body>
+
+</html>

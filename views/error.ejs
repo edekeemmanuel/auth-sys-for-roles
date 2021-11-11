@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="">
+        <img src="images/server-down.svg" alt="" srcset="">
+        <div class="flex">
+            <h4>Server status:</h4>
+            <h4 style="color: tomato; margin-left: 5px"> Down</h4>
+        </div>
+        <div class="flex">
+            <h4>Server IP:</h4>
+            <h4 style="color: tomato; margin-left: 5px">
+                <%- ip %>
+            </h4>
+        </div>
+        <div class="flex">
+            <h4>Server message:</h4>
+            <h4 style="color: tomato; margin-left: 5px">
+                <%- errorMessage %>
+            </h4>
+        </div>
+        <div class="flex">
+            <h4>Server Error Stack:</h4>
+        </div>
+        <h4 style="color: tomato; font-size: 14px">
+            <%- stack.split('(').join('').split(")")[0] %>
+        </h4>
+    </div>
+</body>
+
+</html>
