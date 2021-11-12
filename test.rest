@@ -1,0 +1,22 @@
+GET http://localhost:3000/admin HTTP/1.1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGUwNTYwNGMyOGIwNjM4ZjNlZGZhZCIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpYXQiOjE2MzY3NTAxNTIsImV4cCI6MTYzNjgzNjU1Mn0.8BxomU74sqJOFRjiyhQOIY3Lj-YYW-pH7CE6cE2THCQ
+
+###
+POST http://localhost:3000/user/signin HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "harbiola0@yahoo.com",
+    "password": "test1234"
+}
+
+###
+GET http://localhost:3000/admin/dashboard HTTP/1.1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGVkNWJlNTk1MTg4ZWEwZjA0NTMzOSIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MzY3NTI4MjIsImV4cCI6MTYzNjgzOTIyMn0._ins-MyH9O2S6gtSM3RaDOIacizjqncUKqL67vavYtw
+###
+GET http://localhost:3000/admin/dashboard HTTP/1.1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGVlODJlMzE2ZDg1MjQzNGU4OWRkZCIsIm5hbWUiOiJoYXJiaW9sYSIsImVtYWlsIjoiaGFyYmlvbGEwQHlhaG9vLmNvbSIsImlhdCI6MTYzNjc1NjE0MiwiZXhwIjoxNjM2ODQyNTQyfQ.BkJesWE1-0hi8QwCVozMGqpEtsOuf18rjPy3cjlwKvg
+
+###
+GET http://localhost:3000/user/verify/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaGFyYmlvbGEiLCJlbWFpbCI6ImhhcmJpb2xhMEB5YWhvby5jb20iLCJVcmwiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJpYXQiOjE2MzY3NTU1MDIsImV4cCI6MTYzNjg0MTkwMn0.ab6F6jTcwNrcjcTFbPz3VxezVbZHQdmpyOgXmUF6lnQ HTTP/1.1
