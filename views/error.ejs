@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Server Error</title>
 </head>
 
 <body>
@@ -32,7 +32,8 @@
             <h4>Server Error Stack:</h4>
         </div>
         <h4 style="color: tomato; font-size: 14px">
-            <%- stack.split('(').join('').split(")")[0] %>
+            <%-  stack.split(")")[0].split("\\"); %>
+
         </h4>
     </div>
 </body>
