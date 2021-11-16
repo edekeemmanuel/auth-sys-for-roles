@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose')
-
+const schema = require('../admin/schema')
 const teacherSchema = new Schema({
     teacherId: {
       type: Schema.Types.ObjectId,
@@ -39,3 +39,4 @@ const gradeSchema = new Schema({
 
 exports.teacherModel = model("teachers", teacherSchema);
 exports.gradeModel = model("grades", gradeSchema);
+exports.schema
