@@ -150,7 +150,7 @@ exports.verify = async (req, res) => {
       delete user.password;
       user.status = "activated";
       let uservalidate = await user.save();
-      if(!uservalidate) return
+      if (!uservalidate) return;
       res.json({ ok: true, message: "user account verified", data: user });
       mailService.sendEmail({
         email: user.email,
@@ -166,13 +166,14 @@ exports.verify = async (req, res) => {
 
 exports.getProfile = async (req, res) => {
   try {
-    let id = {_id: req.params.id};
-    let profile = await model.getProfile(id, res)
-    if(profile) return success({message: 'profile operation successful', badge: true})
-    else return error({message: 'profile operation failed', badge: true})
+    let id = { _id: req.params.id };
+    let profile = await model.getProfile(id, res);
+    if (profile)
+      return success({ message: "profile operation successful", badge: true });
+    else return error({ message: "profile operation failed", badge: true });
   } catch (err) {
-    console.log(err.message)
-    res.status(400).json({ok: false, message: err.message})
+    console.log(err.message);
+    res.status(400).json({ ok: false, message: err.message });
     return;
   }
 };
@@ -224,45 +225,31 @@ exports.singleUser = async (req, res) => {
 };
 exports.updateProfile = async (req, res) => {
   try {
-    let { name, location, address, occupation, phone } = req.body;
+    let { location, address, about, phone } = req.body;
     pics = req.file === undefined || null ? "nopics.jpg" : req.file.filename;
-
     console.log(pics, req.file);
     let updateUser = {
-      name,
       photo: pics,
       location,
       phone,
       address,
-      occupation,
+      about,
     };
     let id = { _id: req.params.id };
-    userModel.findOne(id, (err, user) => {
-      if (user) {
-        profileModel.updateOne(
-          { email: user.email },
-          updateUser,
-          (err, result) => {
-            if (err) {
-              console.log(err);
-              res.status(400).json({ ok: false, message: err });
-            }
-            res.status(201).json({
-              ok: true,
-              data: result,
-              photo: pics,
-              message: `User profile updated`,
-            });
-          }
-        );
-      } else {
-        console.log(err.message);
-        res.status(404).json({
-          ok: false,
-          message: `User update failed`,
-        });
-      }
-    });
+    let updateProfile = await model.updateProfile(id, updateUser, res);
+    if (updateProfile) {
+      res.status(200).json({
+        ok: true,
+        data: updateProfile,
+        message: `User profile updated`,
+      });
+    } else {
+      console.log(err.message);
+      res.status(404).json({
+        ok: false,
+        message: `User update failed`,
+      });
+    }
   } catch (err) {
     res.status(500).json({
       status: 500,
@@ -275,36 +262,34 @@ exports.deleteUser = async (req, res) => {
   try {
     let id = { _id: req.params.id };
     let findUser = await userModel.findOne(id);
-    if (!findUser) {
-      console.log("users not found");
-      return res.status(404).json({ ok: false, message: "user not found" });
-    }
+    if (!findUser) return res.status(404).json({ ok: false, message: "user not found" });
     // permission to delete admin
-    if(findUser.isAdmin) {
-     let permission =  await model.access({id: req.user.id})
-     if(!permission) {
-       console.log('unauthorized to perform operation')
-       res.status(401).json({message: 'Unauthorized only super admin can perform operation'})
-     }
-     if(permission) {
-      let deleteUser = await model.removeUser(findUser);
-      if(!deleteUser) return res.status(400).json({
-        ok: false, 
-        message: 'user not deleted',
-      })
-      return res.status(200).json({
-        ok: true,
-        message: "User has been deleted",
-        completed: true,
+    if (findUser.isAdmin) {
+      let permission = await model.access({ id: req.user.id });
+      if (!permission) return res.status(401).json({
+        message: "Unauthorized only super admin can perform operation",
       });
-     } 
+      if (permission) {
+        let deleteUser = await model.removeUser(findUser);
+        if (!deleteUser)
+          return res.status(400).json({
+            ok: false,
+            message: "user not deleted",
+          });
+        return res.status(200).json({
+          ok: true,
+          message: "User has been deleted",
+          completed: true,
+        });
+      }
     }
-    // delete profile
-    let deleteUser = await model.removeUser(findUser)
-    if(!deleteUser) return res.status(400).json({
-      ok: false, 
-      message: 'user not deleted',
-    })
+    // delete user if user is not admin
+    let deleteUser = await model.removeUser(findUser);
+    if (!deleteUser)
+      return res.status(400).json({
+        ok: false,
+        message: "user not deleted",
+      });
     return res.status(200).json({
       ok: true,
       message: "User has been deleted",

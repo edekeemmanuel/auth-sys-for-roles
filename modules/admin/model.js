@@ -33,15 +33,14 @@ exports.create = async (body) => {
   return userProfile;
 };
 
-// exports.update = (body) => {
-//   let user = {body
-//   return user.updateOne(err => {
-//     if (err) {
-//       return err
-//     }
-//     return user
-//   })
-// }
+exports.updateProfile = async (id, body, res) => {
+  let user = await userModel.findOne(id)
+  if(!user) return false
+  let profile = await profileModel.updateOne({email: user.email}, body)
+  if (!profile) return false
+  console.log(profile)
+  return profile
+}
 
 exports.delete = (body) => {
   let user = { body };

@@ -23,6 +23,7 @@ app.use("/", route("sample"));
 app.use("/admin", route("admin"));
 app.use("/user", route("user"));
 app.use("/assignment", route("assignment"));
+// app.use("/teacher", route("teacher"));
 
 // error handlers
 const { notFoundErrorHandler, serverErrorHandler } = require('./utils/helper');

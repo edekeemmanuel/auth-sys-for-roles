@@ -1,9 +1,26 @@
 const {Schema, model} = require('mongoose')
 
+const teacherSchema = new Schema({
+    teacherId: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+  });
+
 const gradeSchema = new Schema({
     userId: {
       type: Schema.Types.ObjectId,
       ref: "users",
+      required: true,
+    },
+    teacherId: {
+      type: Schema.Types.ObjectId,
+      ref: "teacher",
       required: true,
     },
     score: {
@@ -17,8 +34,8 @@ const gradeSchema = new Schema({
     createdAt: {
       type: Date,
       default: Date.now,
-      expires: 3600,
     },
   });
 
-exports.gradeModel = model("teachers", gradeSchema);
+exports.teacherModel = model("teachers", teacherSchema);
+exports.gradeModel = model("grades", gradeSchema);

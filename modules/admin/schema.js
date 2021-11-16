@@ -81,7 +81,7 @@ const profileSchema = new Schema(
       type: String,
       trim: true,
     },
-    occupation: {
+    about: {
       type: String,
       trim: true,
     },
