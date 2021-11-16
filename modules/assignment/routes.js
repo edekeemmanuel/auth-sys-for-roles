@@ -3,7 +3,7 @@ const assignment = require('./handler')
 const auth = require('../../middleware/auth')
 const authTeacher = require('../../middleware/teacherAuth')
 const {log} = console
-log(assignment)
+// log(assignment)
 
 router.post('/', [auth, authTeacher], assignment.create)
 router.get('/', [auth, authTeacher], assignment.find)
