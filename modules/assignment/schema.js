@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
-mongoose.set('useCreateIndex', true);
-mongoose.set("returnOriginal", false);
+// mongoose.set('useCreateIndex', true);
+// mongoose.set("returnOriginal", false);
 
 const assignmentSchema = new Schema({
     description: {
@@ -38,3 +38,5 @@ const assignmentSchema = new Schema({
         default: Date.now
     }
 });
+
+module.exports = model("assignments", assignmentSchema);
