@@ -38,7 +38,7 @@ exports.demote = async (req, res) => {
     if (demote)
       return res.json({
         ok: true,
-        message: `Demoted ${promote.name} with ${promote.id} to stage ${demote.stage}`,
+        message: `Demoted ${demote.name} with ${demote.id} to stage ${demote.stage}`,
       });
     else return res.status(400).json({ ok: false, message: "Demotion failed" });
   } catch (err) {

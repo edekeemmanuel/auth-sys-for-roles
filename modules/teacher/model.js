@@ -27,7 +27,7 @@ exports.demoteStudent = async (id) => {
   let student = await userModel.findOne({ _id: id });
   if(student) {
     console.log(student)
-     student.stage = student.stage - 1
+     student.stage = student.stage == 1 ? 1: (student.stage - 1)
     await student.save()
     console.log(student.stage)
     return student
