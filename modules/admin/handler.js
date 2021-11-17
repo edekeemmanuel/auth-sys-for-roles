@@ -15,16 +15,16 @@ const {verifyEmail, pageWelcome} = require('../../public/email/verification')
 exports.superAdmin = async (req, res) => {
   try {
     let { name, password, email } = {
-      name: "admin10",
+      name: "admin",
       password: "admin1234",
-      email: "admin10@mail.com",
+      email: "admin@mail.com",
     };
     password = await bcrypt.hash(password, 10);
-    info({message:[name, email, password], badge: true})
+    info({message:'super admin created', badge: true})
     // check if admin exists
     const ifEmailExists = await userModel.findOne({ email: email });
     if (ifEmailExists) {
-      log(ifEmailExists, "admin already exists");
+      error({message:'admin already exists', badge: true})
       return res.status(400).json({
         message: "Admin already exists",
       });

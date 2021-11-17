@@ -33,7 +33,11 @@ const userSchema = new Schema(
     isTeacher: {
       type: Boolean,
       default: false,
-    }
+    },
+    stage: {
+      type: Number,
+      default: 1,
+    },
   },
   { timestamps: true }
 );
@@ -85,10 +89,6 @@ const profileSchema = new Schema(
       type: String,
       trim: true,
     },
-    stage: {
-      type: Number,
-      default: 1,
-    }
   },
   { timestamps: true }
 );

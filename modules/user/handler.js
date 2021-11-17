@@ -72,6 +72,7 @@ exports.createUser = async (req, res) => {
       res.status(201).json({
         ok: true,
         data: ifUser._doc,
+        token,
         message:
           "User Registration Successful, check your email to verify your account",
       });
