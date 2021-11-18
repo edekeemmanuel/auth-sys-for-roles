@@ -1,4 +1,4 @@
-const ip = require("public-ip");
+const ip = require('public-ip')
 
 exports.serverErrorHandler = async(err, req, res, next) => res.status(500).render("error", { errorMessage: err.message, stack: err.stack, ip: await ip.v4() });
 
