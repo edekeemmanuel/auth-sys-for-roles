@@ -6,8 +6,8 @@ const {log} = console
 // log(assignment)
 
 router.post('/', [auth, authTeacher], assignment.create)
-router.get('/', [auth, authTeacher], assignment.find)
-router.get('/:id',[auth, authTeacher], assignment.findOne)
+router.get('/', auth, assignment.find)
+router.get('/:id', auth, assignment.findOne)
 router.put('/:id', [auth, authTeacher], assignment.update)
 router.delete('/:id',[auth, authTeacher], assignment.delete)
 
