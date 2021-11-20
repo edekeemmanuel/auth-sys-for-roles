@@ -1,11 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const authHandler = require("./handler");
-// const auth = require("../../middleware/auth");
-// const { upload } = require("../../utils/uploads");
+const router = require("express").Router();
+const user = require("./handler");
+const auth = require("../../middleware/auth")
+const authAdmin = require("../../middleware/adminAuth")
 
-router.post("/signin", authHandler.signin);
-router.post("/signup", authHandler.signup);
-router.get("/verify", authHandler.verify);
+// routes
+router.post('/authenticate', authenticate);
+router.post('/register', register);
+router.get('/', getAll);
+router.get('/current', getCurrent);
+router.get('/:id', getById);
+router.put('/:id', update);
+router.delete('/:id', _delete);
 
 module.exports = router;
+
