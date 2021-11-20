@@ -1,3 +1,4 @@
+
 const { gradeModel } = require("./schema");
 const { userModel, profileModel } = require("../admin/schema");
 
@@ -49,3 +50,4 @@ exports.viewStudent = async () => {
   console.log("view students");
   return fetch
 };
+

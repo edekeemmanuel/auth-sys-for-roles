@@ -1,3 +1,4 @@
+
 const model = require("./model");
 const { log } = console;
 const { error, success, info } = require("consola");

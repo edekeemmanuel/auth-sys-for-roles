@@ -40,4 +40,3 @@ const gradeSchema = new Schema({
 exports.teacherModel = model("teachers", teacherSchema);
 exports.gradeModel = model("grades", gradeSchema);
 exports.schema 
-  

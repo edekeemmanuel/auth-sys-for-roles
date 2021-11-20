@@ -1,3 +1,4 @@
+
 let { info } = require("consola");
 const model = require("./model");
 exports.create = async (req, res) => {
@@ -76,3 +77,5 @@ exports.delete = async (req, res) => {
     res.json({ okay: true, message: "error @delete", error: err.message });
   }
 };
+
+

@@ -1,3 +1,4 @@
+
 const router = require('express').Router()
 const assignment = require('./handler')
 const auth = require('../../middleware/auth')
@@ -12,3 +13,4 @@ router.put('/:id', [auth, authTeacher], assignment.update)
 router.delete('/:id',[auth, authTeacher], assignment.delete)
 
 module.exports = router
+

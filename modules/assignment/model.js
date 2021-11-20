@@ -1,3 +1,4 @@
+
 const {info, success, error} = require('consola')
 const assignmentModel = require('./schema')
 
@@ -59,3 +60,4 @@ exports.add = async (body) => {
       return err
     }
   }; 
+
